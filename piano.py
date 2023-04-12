@@ -1,5 +1,4 @@
 from pynput import keyboard
-import winsound
 import pyaudio
 import numpy as np
 
@@ -29,15 +28,12 @@ def GetIndex(char):
         return -1
 
 
-def Play():
-    winsound.Beep(440, 90)
 
 def press_down(key):
     try:
-        freq = 50*(GetIndex(key.char) + 5) # 音符的频率，这里为 A4
+        freq = 50*(GetIndex(key.char) + 5) 
         audio_signal = np.sin(2.0 * np.pi * freq * time_array)
         stream.write(audio_signal.astype(np.float32).tostring())
-        # winsound.Beep(50*(GetIndex(key.char) + 5), 90)
         pass
     except:
         pass
